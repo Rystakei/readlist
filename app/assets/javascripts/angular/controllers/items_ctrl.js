@@ -28,8 +28,10 @@ app.controller('ItemsCtrl', ['$scope', 'Item', function($scope, Item){
     console.log($scope.items);
   }
 
-  $scope.deleteItem = function(index){
+  $scope.deleteItem = function(id, index){
+    console.log("delete Item has id?",id,"and index?",index);
     $scope.items.splice(index, 1);
+    return Item.delete(id); 
   };
 
 }]);
