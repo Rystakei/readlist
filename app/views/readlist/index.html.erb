@@ -37,7 +37,7 @@
                     <span class="icon-group">
                       <span class="glyphicon glyphicon-arrow-down" ng-click="changeStatus(book.itemId, false)"></span>
                       <span class="glyphicon glyphicon-info-sign"></span>
-                      <span class="glyphicon glyphicon-remove-circle"></span>
+                      <span class="glyphicon glyphicon-remove-circle" ng-click="deleteItem($index)"></span>
                     </span>
 
                      <div class="progress">
@@ -100,7 +100,7 @@
                         <span class="glyphicon glyphicon-arrow-up" ng-click="changeStatus(item.itemId, true)">
                         </span>
                         <span class="glyphicon glyphicon-info-sign"></span>
-                        <span class="glyphicon glyphicon-remove-circle"></span>       
+                        <span class="glyphicon glyphicon-remove-circle" ng-click="deleteItem($index)"></span>       
                       </span>
                     </td>
                   </tr>

@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   resources :items
 
   scope :api do
-    resources :items, only: [:index],defaults: {format: :json}
+    # resources :items, only: [:index],defaults: {format: :json}
+    resources :items, defaults: {format: :json}
   end
   root 'readlist#index'
   # The priority is based upon order of creation: first created -> highest priority.

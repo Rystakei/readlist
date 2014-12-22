@@ -1,6 +1,5 @@
-app.controller('ItemsCtrl', ['$scope', '$resource', function($scope, $resource){
-  var Items = $resource('/api/items');
-  $scope.items = Items.query();
+app.controller('ItemsCtrl', ['$scope', 'Item', function($scope, Item){
+  $scope.items = Item.all(); 
 
 
   $scope.progressRate = function(readPages, totalPages) {
@@ -28,5 +27,9 @@ app.controller('ItemsCtrl', ['$scope', '$resource', function($scope, $resource){
     // $scope.getCurrentStatus();
     console.log($scope.items);
   }
+
+  $scope.deleteItem = function(index){
+    $scope.items.splice(index, 1);
+  };
 
 }]);
