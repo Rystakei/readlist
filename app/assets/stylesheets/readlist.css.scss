@@ -1,0 +1,139 @@
+// Place all the styles related to the readlist controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+// Colors and Fonts
+@import url(http://fonts.googleapis.com/css?family=Ubuntu:400,700);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
+
+ $bodyFont: 'Ubuntu';
+ $headerFontFace: 'Ubuntu';
+ $blue: #2C3E50; 
+ $turquoise: #1DD2AF;
+ $galleryGray: #EEEEEE;
+ $containerBgColor: #EAEDF2;
+ $bodyBgColor: $galleryGray; 
+
+ // $baseColor: #EF4836; 
+ $baseColor: #D04437;
+ $accentColor: #F22613;
+ $tertiaryColor: #3A539B;
+
+
+.add-me{
+  margin-left: 8px;
+}
+body{
+  background-color: $bodyBgColor; 
+  font-family: $bodyFont, Arial; 
+  color: #333333; 
+}
+
+nav.navbar.navbar-default{
+  background-color: #D04437;
+  border-bottom: solid 1px darken($bodyBgColor, 20%); 
+  color: white; 
+  a, a:focus{
+  color: white;
+  // font-weight: bold; 
+  }
+  .glyphicon{
+    color: white; 
+  }
+}
+
+// .brand-emphasis{
+//   color: $baseColor; 
+// }
+
+.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
+  color: white;
+}
+
+.panel > .panel-heading{
+  background-color: darken($bodyBgColor, 5%); 
+  font-weight: bold; 
+  font-size: 16px;
+}
+
+
+.highlight-date{
+  color: $tertiaryColor;
+}
+
+.highlight-rate{
+  color: $tertiaryColor;
+}
+
+.rate-info{
+  padding-top: 15px;
+}
+
+a{
+  color: gray;
+}
+a:hover{
+  color: $baseColor;
+  text-decoration: none;
+}
+
+.title{
+  font-weight: bold;
+}
+.table-striped > tbody > tr:nth-child(odd).table-headers{
+  // background-color: gray;
+  // color: white;
+}
+
+.info td:first-child{
+  font-weight: bold; 
+}
+
+.progress{
+  width:50%;
+  margin-top: 20px;
+  &:hover .progress-bar{
+    background-color: #96281B;
+    border-color: #96281B;
+  }
+}
+
+.progress-bar{
+  // background-color: lighten(#96281B, 15%);
+  background-color: $tertiaryColor;
+}
+
+.list-group-item:hover .progress-bar{
+  background-color: lighten($tertiaryColor, 10%);
+}
+
+
+.btn.btn-danger{
+  // background-color: lighten(#96281B, 15%);
+  // border-color: lighten(#96281B, 15%);
+  background-color: $baseColor;
+  border-color: $baseColor;
+  &:hover{
+    background-color: $accentColor;
+    border-color: $accentColor;
+  }
+}
+
+.icon-group{
+  visibility: hidden;
+  .glyphicon{
+    cursor: pointer;
+  }
+}
+
+.list-group-item:hover > .icon-group, tr:hover .icon-group{
+  visibility: visible;
+}
+
+.glyphicon{
+  margin: 0px 5px; 
+}
+.glyphicon.glyphicon-remove-circle{
+  color: $baseColor;
+}

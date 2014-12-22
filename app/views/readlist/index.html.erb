@@ -1,0 +1,161 @@
+
+  <!-- Page Content -->
+  <div id="page-content-wrapper" ng-controller="ItemsCtrl">
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand">
+            <span class="glyphicon glyphicon-book"></span>
+            Read<span class="brand-emphasis">List</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+    
+      <div class="container">
+        <div class="heading">
+        </div>
+        <div class="row">
+          <div class="col-md-9">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                Currently Reading
+                <a class="btn btn-danger add-me" ng-click="addToQueue()">
+                  <span class="glyphicon glyphicon-plus"></span>
+                  Add Item
+                </a>
+              </div>
+              <div class="panel-body">
+              <div class="alert alert-danger" role="alert" ng-if="currentItems.length < 1">
+                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true">
+                </span>
+                You aren't currently reading anything! You should add something to the list.
+              </div>
+                <ul class="list-group">
+                  <li class="list-group-item" ng-repeat="book in (currentItems = (items | filter: { in_progress: true }))">
+                    <span class="title"> {{ book.title }} </span>
+                    <span class="icon-group">
+                      <span class="glyphicon glyphicon-arrow-down" ng-click="changeStatus(book.itemId, false)"></span>
+                      <span class="glyphicon glyphicon-info-sign"></span>
+                      <span class="glyphicon glyphicon-remove-circle"></span>
+                    </span>
+
+                     <div class="progress">
+                         <div class="progress-bar" role="progressbar" aria-valuenow="{{progressRate(book.current_page, book.total_pages)}}" aria-valuemax="100" style="width: {{progressRate(book.current_page, book.total_pages)}}%">
+                           {{book.current_page}} / {{book.total_pages}} pages <span class="highlight-rate">({{ progressRate(book.current_page, book.total_pages)}}%)</span>
+                       </div>
+                     </div>
+                    <div class="startDate"><span class="title">Started:</span> {{startDate}}</div>
+                    <div class="rate-info">
+                      Read <span class="highlight-rate">{{dailyRate }} pages</span> 
+                      per day to finish by <span class="highlight-date">tomorrow</span>
+                    </div>
+
+                  </li>
+                </ul>
+               </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading" >
+                To Read Later 
+                <a class="btn btn-danger add-me" ng-click="addToQueue()">
+                  <span class="glyphicon glyphicon-plus"></span>
+                  Add Item
+                </a>
+              </div>
+              <div class="panel-body">
+                <div class="alert alert-danger" ng-show="(items | filter:{ in_progress: false }).length==0">
+                  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true">
+                  </span>
+                  There aren't any resources to read later. You should add some! 
+                </div>
+              <div class="read-later" ng-hide="(items | filter:{ in_progress: false }).length==0">
+               <form class="form-inline float-right">
+                  <div class="form-group has-feedback">
+                   <div class="input-group">
+                      <input type="text" placeholder="Search Items" class="form-control" ng-model="search" />
+                     <span class="form-control-feedback fui-search"></span>
+                   </div>
+                  </div>
+                  <!--/.form-group--> 
+                </form> 
+            <br>
+              <!-- table -->
+                <table class="table table-striped queue-table">          
+                  <tr class="table-headers">
+                    <th>Title</th>
+                    <th>Tags</th>
+                    <th>Actions</th>
+                  </tr>
+                  <tbody ui-sortable class="queue-body">
+                  <tr ng-repeat="item in items | filter:search:strict|  filter: { in_progress: false }">
+                    <td>
+                      {{item.title}} 
+                    </td>
+                    <td>
+                      <a>{{item.tags.join(",")}}</a>
+                    </td>
+                    <td>
+                      <span class="icon-group">
+                        <span class="glyphicon glyphicon-arrow-up" ng-click="changeStatus(item.itemId, true)">
+                        </span>
+                        <span class="glyphicon glyphicon-info-sign"></span>
+                        <span class="glyphicon glyphicon-remove-circle"></span>       
+                      </span>
+                    </td>
+                  </tr>
+                  </tbody>
+                  </tr>
+                </table> 
+                <!-- end read later body -->
+                </div>               
+              <!-- end panel body -->
+              </div>
+              <!-- end panel -->
+            </div>
+            <!-- end col md 9 -->
+          </div>
+
+          <div class="col-md-3">
+            <div class="panel panel-default info">
+              <div class="panel-heading">
+                Resource Info
+              </div>
+              <div class="panel-body">
+                <table class="table table-striped">
+                  <tr>
+                    <td>Title:</td>
+                    <td>HTML5 in Action</td>
+                  </tr>
+                  <tr>
+                    <td>URL:</td>
+                    <td><a>http://amazon.com</a></td>
+                  </tr>
+                  <tr>
+                    <td>Tags: </td>
+                    <td><a>html5</a>, <a>apis</a></td>
+                  </tr>
+                  <tr>
+                    <td> Progress: </td>
+                    <td>100/200p <i> 50%</i></td>
+                  </tr>
+                  <tr>
+                    <td>Due Date:</td>
+                    <td>10/1/15</td>
+                  </tr>
+                  <tr>
+                    <td rowspan="2">Notes:</td>
+                    </tr>
+                    <tr>
+                      <td rowspan="2">
+                        <textarea class="form-control" rows="3" placeholder="Enter notes here."></textarea>
+                      </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+         </div>        
+      <!-- container -->
+        </div>        
+<!-- /#page-content-wrapper -->

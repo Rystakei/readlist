@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  current_page: 1
+  total_pages: 1
+  url: MyString
+  due_date: 2014-12-22
+
+two:
+  title: MyString
+  current_page: 1
+  total_pages: 1
+  url: MyString
+  due_date: 2014-12-22
