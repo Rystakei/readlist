@@ -4,7 +4,7 @@
 
 
 // Colors and Fonts
-@import url(http://fonts.googleapis.com/css?family=Ubuntu:400,700);
+@import url(http://fonts.googleapis.com/css?family=Ubuntu:400,500,600,700);
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
 
  $bodyFont: 'Ubuntu';
@@ -19,11 +19,10 @@
  $baseColor: #D04437;
  $accentColor: #F22613;
  $tertiaryColor: #3A539B;
+ $changeColor: lighten(#37c3d0, 40%);
+ $changeColorBase: #37c3d0;
 
 
-.add-me{
-  margin-left: 8px;
-}
 body{
   background-color: $bodyBgColor; 
   font-family: $bodyFont, Arial; 
@@ -36,16 +35,11 @@ nav.navbar.navbar-default{
   color: white; 
   a, a:focus{
   color: white;
-  // font-weight: bold; 
   }
   .glyphicon{
     color: white; 
   }
 }
-
-// .brand-emphasis{
-//   color: $baseColor; 
-// }
 
 .navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
   color: white;
@@ -55,6 +49,13 @@ nav.navbar.navbar-default{
   background-color: darken($bodyBgColor, 5%); 
   font-weight: bold; 
   font-size: 16px;
+  box-sizing: border-box;
+  min-height: 55px;
+}
+
+.highlight-date , .highlight-rate {
+  text-decoration: none;
+  border-bottom: dotted 1px $tertiaryColor;
 }
 
 
@@ -81,10 +82,7 @@ a:hover{
 .title{
   font-weight: bold;
 }
-.table-striped > tbody > tr:nth-child(odd).table-headers{
-  // background-color: gray;
-  // color: white;
-}
+
 
 .info td:first-child{
   font-weight: bold; 
@@ -136,4 +134,88 @@ a:hover{
 }
 .glyphicon.glyphicon-remove-circle{
   color: $baseColor;
+}
+
+
+.btn.btn-save{
+  background-color: $changeColorBase;
+  color: white;
+  &:hover{
+    background-color: lighten($changeColorBase, 10%);
+  }
+}
+
+.list-group-item-info {
+  border: $changeColorBase solid 2px;
+  background-color: $changeColor;
+  color: #333333;
+
+  label{
+    font-weight: normal;
+  }
+
+  hr{
+    color: black;
+    background-color: black;
+    border-top: 1px solid black;
+  }
+
+  .new-item-actions{
+    padding: 20px;
+    text-align: center;
+
+    .btn{
+      margin: 0px;
+    }
+  }
+  .save-new-item, .remove-new-item{
+    font-size: 12px;
+    margin-right: 5px;
+
+    .glyphicon{
+      padding-right: 0px;
+      margin: -20px 0px 20px 0px;
+    }
+  }
+  .save-new-item .glyphicon{
+    color: $tertiaryColor;
+  }
+
+  .remove-new-item .glyphicon{
+    color: $baseColor;
+  }
+
+  h1{
+    font-size: 15px;
+    // color: $changeColorBase;
+    font-weight: 500;
+    padding-top: 0px;
+    margin-top: 0px;
+  }
+}
+.new-item{
+  label{
+    text-weight: 500;
+  }
+  input{
+    border: 0px;
+    border-bottom: 1px dotted $changeColorBase;
+    margin-left: 10px;
+    background-color: lighten($changeColor, 0%);
+    color: $changeColorBase;
+  }
+  input[type="number"]{
+    width: 30px;
+  }
+  input[type="text"]{
+    width: 200px;
+  }
+  input:focus{
+    background-color: lighten($changeColor, 5%);
+    outline: none;
+  }
+}
+
+.add-new-item{
+  display:none;
 }
