@@ -58,16 +58,12 @@ app.controller('ItemsCtrl', ['$scope', 'Item', function($scope, Item){
     var updatedItemIndex = $scope.items.indexOf(item);
     var itemToUpdate = $scope.items[updatedItemIndex];
     itemToUpdate.in_progress = attr;
-    console.log("Just updated item in Angular", itemToUpdate);
-    console.log("Step one, id--", id);
     Item.update({id: id, in_progress: attr});
   }
 
   $scope.discardItem = function(){
-    console.log("discardme!");
     $('.add-new-item').fadeOut().val('');
     $('.add-me').fadeIn();
-    console.log("Discarded?");
   }
 
 }]);
